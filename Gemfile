@@ -23,6 +23,18 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 # Use postgresql
 gem 'pg', '~> 0.20.0'
+# Interactive tables
+gem 'hirb', '~> 0.7.3'
+#Styling framework
+gem 'bulma-rails', '~> 0.9.0'
+# Forms easy
+gem 'simple_form', '~> 5.0', '>= 5.0.3'
+
+gem 'gravatar_image_tag', '~> 1.2'
+
+gem 'devise', '~> 4.7', '>= 4.7.3'
+
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
