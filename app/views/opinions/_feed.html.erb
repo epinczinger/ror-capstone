@@ -1,0 +1,44 @@
+<div class="column  is-half">
+    <div class="box">
+      <article class="media">
+              
+     <div class="media-left">
+
+      <figure class="image is-64x64">
+        <img
+          src="https://bulma.io/images/placeholders/64x64.png"
+          alt="profile-image"
+        />
+      </figure>
+       
+    </div>
+    
+    <div class="media-content">
+        <%= render 'form' %>
+    </div>
+   
+    </div>
+  </article>
+
+
+<% @opinions.each do |opinion| %>
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img
+          src="https://bulma.io/images/placeholders/64x64.png"
+          alt="profile-image"
+        />
+      </figure>
+    </div>
+    <div class="media-content"><%= opinion.text %>
+    </div>
+     <%= link_to 'Edit', edit_opinion_path(opinion), class: 'button is-light' %> 
+     <%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+     
+     
+  </article>
+</div>
+<% end %>
+</div>

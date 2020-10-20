@@ -2,22 +2,49 @@
 <html>
   <head>
     <title>CapstoneRor</title>
-    <%= csrf_meta_tags %> <%= csp_meta_tag %> <%= stylesheet_link_tag
-    'application', media: 'all', 'data-turbolinks-track': 'reload' %> <%=
-    javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <% if flash[:notice] %>
-
+    
     <div class="notification is-primary global-notification">
-      <p class="notice"><%= notice %></p>
+      <p class="notice"><%= notice %> </p>
     </div>
-    <% end %> <% if flash[:alert] %>
-
+    <% end %>
+     <% if flash[:alert] %>
+    
     <div class="notification is-danger global-notification">
-      <p class="alert"><%= alert %></p>
+      <p class="alert"><%= notice %> </p>
     </div>
-    <% end %> <%= yield %>
+    <% end %>
+
+    <nav class="navbar is-link">
+      <div class="navbar-brand">
+      <%= link_to root_path, class: "navbar-item" do%>
+      <h1 class="title is-5">Surfeature</h1>
+      <% end %>
+      </div>
+
+      <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <%= link_to 'Share your info', new_opinion_path, class: "is-dark button" %>
+          <a class="button is-light">
+            Sign Up
+          </a>
+        </div>
+      </div>
+    </div>
+        
+       
+    
+    </nav>
+    <%= yield %>
   </body>
 </html>
