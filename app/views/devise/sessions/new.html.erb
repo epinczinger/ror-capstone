@@ -1,8 +1,8 @@
 <h2>Log in</h2>
 
 <%= simple_form_for @user, url:user_session_path do |f| %>
+  <%= f.input :username %>
   <%= f.input :password, wrapper_html: { id: 'password' } %>
-  <%= f.input :remember_me, wrapper_html: { class: 'options' } %>
   <%= f.button :submit %>
 <% end %>
 
