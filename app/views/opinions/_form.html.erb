@@ -1,8 +1,21 @@
-<%= simple_form_for(@opinion) do |f| %>
-<%= f.error_notification %>
-<div class='field'>
-  <div class='control'>
+<%= form_with(model: @opinion, local: true) do |form| %>
+  <% if @opinion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@opinion.errors.count, "error") %> prohibited this opinion from being saved:</h2>
+
+      <ul>
+        <% opinion.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
-</div>
-<%= f.button :submit, class: 'button is-info'%>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_area :text %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>
