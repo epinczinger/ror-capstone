@@ -16,17 +16,18 @@ class OpinionsController < ApplicationController
 
   # GET /opinions/new
   def new
-    @opinion = Opinion.new
+    @opinion = current_user.opinions.build
   end
 
   # GET /opinions/1/edit
   def edit
+
   end
 
   # POST /opinions
   # POST /opinions.json
   def create
-    @opinion = Opinion.new(opinion_params)
+    @opinion = current_user.opinions.build(opinion_params)
 
     respond_to do |format|
       if @opinion.save
@@ -44,7 +45,7 @@ class OpinionsController < ApplicationController
   def update
     respond_to do |format|
       if @opinion.update(opinion_params)
-        format.html { redirect_to @opinion, notice: 'Opinion was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Opinion was successfully updated.' }
         format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }

@@ -1,14 +1,13 @@
 <div class="column  is-half">
-    <div class="box">
-      <article class="media">
+    <% if user_signed_in? %>
+   
+      <article class="media box">
               
      <div class="media-left">
 
       <figure class="image is-64x64">
-        <img
-          src="https://bulma.io/images/placeholders/64x64.png"
-          alt="profile-image"
-        />
+        
+        <% gravatar_image_tag(current_user.email, size: 64, alt: 'profile pic') %>
       </figure>
        
     </div>
@@ -17,26 +16,28 @@
         <%= render 'form' %>
     </div>
    
-    </div>
+   
   </article>
-
+<% end %>
 
 <% @opinions.each do |opinion| %>
 <div class="box">
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
-        <img
-          src="https://bulma.io/images/placeholders/64x64.png"
-          alt="profile-image"
-        />
+        <% gravatar_image_tag(opinion.user.email, size: 64, alt: 'profile pic') %>
       </figure>
     </div>
-    <div class="media-content"><%= opinion.text %>
+    <div class="media-content">
+        <div class="content">
+         <strong>@<%=opinion.user.username %></strong> </br>
+         <small><%=opinion.user.fullname%></small></br>
+           <p> <%= opinion.text %></p></div>
     </div>
+    <% if user_signed_in? %>
      <%= link_to 'Edit', edit_opinion_path(opinion), class: 'button is-light' %> 
      <%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
-     
+    <% end %>
      
   </article>
 </div>
