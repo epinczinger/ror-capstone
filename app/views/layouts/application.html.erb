@@ -24,6 +24,11 @@
     </div>
     <% end %>
 
+    <section class="columns is-gapless">
+    <section class="column is-one-quarter has-background-grey-dark">
+    <%= render 'side-menu' %>
+    </section>
+    <section class="column is-three-quarters">
     <nav class="navbar is-link">
       <div class="navbar-brand">
       <%= link_to root_path, class: "navbar-item" do%>
@@ -34,7 +39,7 @@
         <div class="navbar-item">
            <div class="buttons">
           
-              <%= link_to 'Share your info', new_opinion_path, class: "is-dark button"%>
+              <%= link_to 'Share your info', root_path, class: "is-dark button"%>
                <%= sign_in_out %>
             </div></div>
       </div>
@@ -43,5 +48,7 @@
     
     </nav>
     <%= yield %>
+    </section>
+    </section>
   </body>
 </html>
