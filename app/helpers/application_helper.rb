@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# fr
 module ApplicationHelper
   def sign_in_out
     if user_signed_in?

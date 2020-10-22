@@ -1,5 +1,6 @@
 <div class="column">
 	<nav class="panel has-background-light">
+    <% if user_signed_in? %>
 		<p class="panel-heading">Profile</p>
 		<div class="panel-block">
 			<article class="media">
@@ -39,6 +40,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+    </div>
+    <% end %>
 	</nav>
 </div>
