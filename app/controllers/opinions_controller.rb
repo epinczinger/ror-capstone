@@ -7,6 +7,8 @@ class OpinionsController < ApplicationController
   def index
     @opinions = Opinion.all.order('created_at DESC')
     @opinion = Opinion.new
+
+    @users = User.all
   end
 
   # GET /opinions/1

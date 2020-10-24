@@ -2,3 +2,6 @@
 <p>Find me in app/views/users/show.html.erb</p>
 
 <%= @user.fullname %>
+
+    <p>	<%= render 'followings/follow_button', :user => User.find_by_username(params[:id]) %>
+			

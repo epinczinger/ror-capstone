@@ -14,7 +14,7 @@
 						<p>
 							<strong><%= current_user.username %></strong><br />
 							<small><%= current_user.fullname %></small>
-						</p>
+							</p>
 					</div>
 				</div>
 			</article>
@@ -30,17 +30,17 @@
 				<div class="level-item has-centered-text">
 					<div>
 						<p class="heading">Following</p>
-						<p class="title is-6">123</p>
+						<p class="title is-6"><%= current_user.followings.count%></p>
 					</div>
 				</div>
 					<div class="level-item has-centered-text">
 					<div>
 						<p class="heading">Followers</p>
-						<p class="title is-6">465K</p>
+						<p class="title is-6"><%=current_user.followers.count%></p>
 					</div>
 				</div>
 			</div>
-    </div>
+   		</div>
     <% end %>
 	</nav>
 </div>
