@@ -2,10 +2,11 @@
   <nav class="panel">
     <p class="panel-heading">Who to Follow</p>
     <% if user_signed_in? %>
-    <div class="panel-block">
+    <div class="column">
        
         <div class="box "></br>
            <% @users.each do |user| %>
+           
           <article class="media ">
             <div class="media-left">
               <% if user.photo.attached? %>

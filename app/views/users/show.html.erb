@@ -1,4 +1,4 @@
-<div class="columns"><div class="container column">
+<div class="columns is-gapeless"><div class="container column">
 <div class="image is-900x300 is-fullwidth">
             <% if @user.cover_image.attached? %>
             <%= image_tag(@user.cover_image)  %>
@@ -7,7 +7,7 @@
             <% end %>
             </div>
 </br>
-<p class="title"><%= @user.fullname %></p>
+<p class="title px-2"> <%= @user.fullname %></p>
 
 <% @user.opinions.each do |opinion| %>
 <div class="box">
@@ -42,7 +42,7 @@
 <div class="column is-one-third">
     <div class="column ">
 	<nav class="panel ">
-		<p class="panel-heading  has-text-grey-light"><%= @user.username %></p>
+		<p class="panel-heading  has-text-grey-light px-2"><%= @user.username %></p>
 	    
 		<div class="panel-block ">
 			<article class="media ">

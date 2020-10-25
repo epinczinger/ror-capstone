@@ -1,69 +1,96 @@
 <div class="column side-menu">
-	<nav class="panel side-menu">
-		<p class="panel-heading side-menu has-text-grey-light">Profile</p>
-	    <% if user_signed_in? %>
-		<div class="panel-block side-menu">
-			<article class="media ">
-				<div class="media-left ">
-					<figure class="image is-64x64">
-					<% if current_user.photo.attached? %>
-       					<%= image_tag(current_user.photo)  %>
-       				<% else %>
-        				<%= gravatar_image_tag(current_user.email, size: 64, alt: 'profile pic') %>
-      				<% end %>
-					</figure>
-				</div>
-				<div class="media-content">
-					<div class="content has-text-grey-light">
-						<p>
-							<strong class="has-text-grey-light"><%= current_user.username %></strong><br />
-							<small><%= current_user.fullname %></small>
-						</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		<div class="panel-block side-menu-2">
-			<div class="level is-mobile">
-				<div class="level-item has-text-centered has-text-grey-light">
-					<div>
-						<p class="heading">Opinions</p>
-						<p class="title is-6 has-text-centered has-text-grey-light"><%= current_user.opinions.count %></p>
-					</div>
-				</div>
-				<div class="level-item has-text-centered has-text-grey-light">
-					<div>
-						<p class="heading">Following</p>
-						<p class="title is-6 has-text-grey-light"><%= current_user.followings.count%></p>
-					</div>
-				</div>
-					<div class="level-item has-text-centered has-text-grey-light">
-					<div>
-						<p class="heading">Followers</p>
-						<p class="title is-6 has-text-grey-light"><%=current_user.followers.count%></p>
-					</div>
-				</div>
-			</div>
-   		</div>
-	<% end %>
-	<div class="left-menu side-menu-2">
-		
-			<div class=" hero"><div class="hero-body"><a class='has-text-centered has-text-grey-light' href='#'><span class="icon p-2">
-  <i class="fas fa-home"></i>
-</span>Home</a></div></div>
-			<div class="hero"><div class="hero-body"><a class='has-text-centered has-text-grey-light' href='#'><span class="icon p-2">
-  <i class="fas fa-at"></i>
-</span>Connect</a></div></div>
-			<div class="hero"><div class="hero-body"><a class='has-text-centered has-text-grey-light' href='#'><span class="icon p-2">
-  <i class="fas fa-hashtag"></i>
-</span>Discover</a></div></div>
-			<div class="hero"><div class="hero-body"><a class='has-text-centered has-text-grey-light' href='#'><span class="icon p-2">
-  <i class="fas fa-user-alt"></i>
-</span>Profile</a></div></div>
-			<div class="hero"><div class="hero-body"><a class='has-text-centered has-text-grey-light' href='#'><span class="icon p-2">
-  <i class="fas fa-chart-pie"></i>
-</span>Statistics</a></div></div>
-		
-	</div>
-	</nav>
+  
+    <p class="panel-heading side-menu has-text-grey-light">Profile</p>
+    <% if user_signed_in? %>
+    <div class="box side-menu">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <% if current_user.photo.attached? %> <%=
+            image_tag(current_user.photo) %> <% else %> <%=
+            gravatar_image_tag(current_user.email, size: 64, alt: 'profile pic')
+            %> <% end %>
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content has-text-grey-light">
+            <p>
+              <strong class="has-text-grey-light"
+                ><%= current_user.username %></strong
+              ><br />
+              <small><%= current_user.fullname %></small>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="side-menu-2 mx-1 columns is-mobile">
+      <div class="level-item column has-text-centered has-text-grey-light">
+        <div>
+          <p class="heading">Opinions</p>
+          <p class="title is-6 has-text-centered has-text-grey-light">
+            <%= current_user.opinions.count %>
+          </p>
+        </div>
+      </div>
+      <div class="level-item column has-text-centered has-text-grey-light">
+        <div>
+          <p class="heading">Following</p>
+          <p class="title is-6 has-text-grey-light">
+            <%= current_user.followings.count%>
+          </p>
+        </div>
+      </div>
+      <div class="level-item column has-text-centered has-text-grey-light">
+        <div>
+          <p class="heading">Followers</p>
+          <p class="title is-6 has-text-grey-light">
+            <%=current_user.followers.count%>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <div class="side-menu-2">
+      <div class="hero">
+        <div class="hero-body">
+          <a class="has-text-centered has-text-grey-light" href="#"
+            ><span class="icon p-2"> <i class="fas fa-home"></i> </span>Home</a
+          >
+        </div>
+      </div>
+      <div class="hero">
+        <div class="hero-body">
+          <a class="has-text-centered has-text-grey-light" href="#"
+            ><span class="icon p-2"> <i class="fas fa-at"></i> </span>Connect</a
+          >
+        </div>
+      </div>
+      <div class="hero">
+        <div class="hero-body">
+          <a class="has-text-centered has-text-grey-light" href="#"
+            ><span class="icon p-2"> <i class="fas fa-hashtag"></i> </span
+            >Discover</a
+          >
+        </div>
+      </div>
+      <div class="hero">
+        <div class="hero-body">
+          <a class="has-text-centered has-text-grey-light" href="#"
+            ><span class="icon p-2"> <i class="fas fa-user-alt"></i> </span
+            >Profile</a
+          >
+        </div>
+      </div>
+      <div class="hero">
+        <div class="hero-body">
+          <a class="has-text-centered has-text-grey-light" href="#"
+            ><span class="icon p-2"> <i class="fas fa-chart-pie"></i> </span
+            >Statistics</a
+          >
+        </div>
+      </div>
+    </div>
+  </nav>
 </div>
