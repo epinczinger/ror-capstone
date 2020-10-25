@@ -11,4 +11,14 @@ module ApplicationHelper
     end
     out.html_safe
   end
+
+  def like_or_dislike_btn(opinion)
+    like = Like.find_by(opinion: opinion, user: current_user)
+    if like
+      link_to('Dislike!', like_path(id: like.id, opinion_id: opinion.id), method: :delete)
+    else
+      link_to('Like!', opinion_likes_path(opinion_id: opinion.id), method: :post)
+    end
+  end
+
 end

@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_one_attached :cover_image
 
+  has_many :likes, dependent: :destroy
+
   validates_uniqueness_of :username, case_sensitive: false
   validates_presence_of :username
   validates_presence_of :fullname
