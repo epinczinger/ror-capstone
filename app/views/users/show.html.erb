@@ -8,7 +8,9 @@
             </div>
 </br>
 <p class="title px-2"> <%= @user.fullname %></p>
-
+<div class="media-content box">
+        <%= render 'opinions/form' %>
+    </div>
 <% @user.opinions.each do |opinion| %>
 <div class="box">
   <article class="media">

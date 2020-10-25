@@ -32,4 +32,8 @@ class User < ApplicationRecord
   def following?(other)
     followings.include?(other)
   end
+
+  def not_following
+    User.where.not(id: followings).where.not(id: id).order('created_at DESC')
+  end
 end
