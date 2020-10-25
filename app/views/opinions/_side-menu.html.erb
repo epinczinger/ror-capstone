@@ -5,9 +5,17 @@
 		<div class="panel-block">
 			<article class="media">
 				<div class="media-left">
-					<figure class="image is-64x64">
-						<%= gravatar_image_tag(current_user.email, size: 64, alt: 'Profile pic') %>
-					</figure>
+
+					<% if current_user.photo.attached? %>
+      
+      <figure class="image is-64x64">
+        <%= image_tag(current_user.photo)  %>
+        <% else %>
+        <%= gravatar_image_tag(current_user.email, size: 64, alt: 'profile pic') %>
+      </figure>
+      <% end %>
+
+					
 				</div>
 				<div class="media-content">
 					<div class="content">
