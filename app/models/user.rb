@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :followings, through: :active_followings, source: :followed
   has_many :followers, through:  :pasive_followings, source: :follower
 
+  has_one_attached :photo
+  has_one_attached :cover_image
 
 
     def follow(other)
