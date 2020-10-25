@@ -24,17 +24,24 @@
 <div class="box">
   <article class="media">
     <div class="media-left">
+      <% if opinion.user.photo.attached? %>
+      
       <figure class="image is-64x64">
+        <%= image_tag(opinion.user.photo)  %>
+        <% else %>
         <%= gravatar_image_tag(opinion.user.email, size: 64, alt: 'profile pic') %>
       </figure>
+      <% end %>
     </div>
     <div class="media-content">
         <div class="content">
-         <strong>@<%=opinion.user.username %></strong> </br>
+         <strong>
+           <%= link_to(opinion.user.username, user_path(opinion.user)) %></strong> </br>
+          
          <small><%=opinion.user.fullname%></small></br>
            <p> <%= opinion.text %></p></div>
     </div>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && opinion.user == current_user %>
      <%= link_to 'Edit', edit_opinion_path(opinion), class: 'button is-light' %> 
      <%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
     <% end %>

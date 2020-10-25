@@ -10,6 +10,18 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+      <% if @user.photo.attached? %>
+   <p>Profile Picture</p>
+   <%= image_tag(@user.photo)  %>
+ <% end %>
+    <%= f.input :photo %>
+
+    <% if @user.cover_image.attached? %>
+   <p>Cover Image</p>
+   <%= image_tag(@user.cover_image)  %>
+ <% end %>
+    <%= f.input :cover_image %>
+
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,

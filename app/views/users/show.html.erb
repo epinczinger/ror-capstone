@@ -1,4 +1,17 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 
+            <% if @user.cover_image.attached? %>
+            <%= image_tag(@user.cover_image)  %>
+            <% else %>
+            <%= image_tag 'https://source.unsplash.com/900x300/?surf' %>
+            <% end %>
+
 <%= @user.fullname %>
+
+<% if @user.photo.attached? %>
+            <%= image_tag(@user.photo)  %>
+            <% else %> <%= gravatar_image_tag(@user.email, size: 64, alt: 'profile pic') %>
+    
+            <% end %>
+            

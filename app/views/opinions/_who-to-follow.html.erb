@@ -1,20 +1,44 @@
 <div class="column is-one-third">
   <nav class="panel">
     <p class="panel-heading">Who to Follow</p>
-
+    <% if user_signed_in? %>
     <div class="panel-block">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image is-32x32">
-            <img src="https://bulma.io/images/placeholders/64x64.png" />
-          </figure>
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <p></p>
-          </div>
-        </div>
-      </article>
-    </div>
+       
+        <div class="box "></br>
+           <% @users.each do |user| %>
+          <article class="media ">
+            <div class="media-left">
+              <% if user.photo.attached? %>
+              <figure class="image is-64x64">
+               <%= image_tag(user.photo)  %>
+               <% else %>
+               <%= gravatar_image_tag(user.email, size: 64, alt: 'profile pic') %>
+              </figure>
+               <% end %>
+            </div>
+            <div class="media-content">
+                <div class="content">
+                  <strong>
+                   <%= link_to(user.username, user_path(user)) %></strong> </br>
+                </div>
+                <% if current_user.id != user.id %>
+                  <% if !current_user.following?(user) %> 
+                    <%= form_for(current_user.active_followings.build) do |f| %>
+                <div class=""><%= hidden_field_tag :followed_id, user.id %></div>
+                   <%= f.submit "Follow", class: "button is-info" %> 
+                <% end %> 
+           <% else %> 
+        <%= form_for(current_user.active_followings.find_by(followed_id: user.id),  html: {method: :delete}) do |f| %>
+            <%= f.submit "Unfollow", class: "button is-info" %>
+        <% end %>
+    <% end %>
+<% end %>
+                </div>
+          </article>
+                <% end %>
+        </div></br>
+
+    
+    <% end %> 
   </nav>
 </div>
