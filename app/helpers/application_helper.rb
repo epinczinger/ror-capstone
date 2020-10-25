@@ -13,13 +13,14 @@ module ApplicationHelper
   end
 
   def like_or_dislike_btn(opinion)
-    if current_user != opinion.user && current_user != nil
+    return unless current_user != opinion.user && !current_user.nil?
+
     like = Like.find_by(opinion: opinion, user: current_user)
     if like
-      link_to('Dislike!', like_path(id: like.id, opinion_id: opinion.id), method: :delete, class: 'is-small is-danger button')
+      link_to('Dislike!', like_path(id: like.id, opinion_id: opinion.id),
+              method: :delete, class: 'is-small is-danger button')
     else
       link_to('Like!', opinion_likes_path(opinion_id: opinion.id), method: :post, class: 'button is-info is-small')
     end
-  end
   end
 end

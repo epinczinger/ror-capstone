@@ -42,13 +42,16 @@
            <p> <%= opinion.text %></p></div>
            
 
-    </div>
-    <%= like_or_dislike_btn(opinion) %> </br></br>
-    <small><%= opinion.likes.count %> People liked it</small>
-    <% if user_signed_in? && opinion.user == current_user %>
+    </div><div class="">
+      <% if user_signed_in? && opinion.user == current_user %>
      <%= link_to 'Edit', edit_opinion_path(opinion), class: 'button is-light' %> 
      <%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
-    <% end %>
+    <% end %></br>
+    <%= like_or_dislike_btn(opinion) %> </br></br>
+    <small><%= opinion.likes.count %> People liked it</small> 
+    
+    </div>
+    
      
   </article>
 </div>
