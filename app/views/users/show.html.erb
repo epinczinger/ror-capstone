@@ -1,17 +1,138 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
+<div class="columns"><div class="container column">
+<div class="image is-900x300 is-fullwidth">
             <% if @user.cover_image.attached? %>
             <%= image_tag(@user.cover_image)  %>
             <% else %>
             <%= image_tag 'https://source.unsplash.com/900x300/?surf' %>
             <% end %>
+            </div>
+</br>
+<p class="title"><%= @user.fullname %></p>
 
-<%= @user.fullname %>
-
-<% if @user.photo.attached? %>
-            <%= image_tag(@user.photo)  %>
-            <% else %> <%= gravatar_image_tag(@user.email, size: 64, alt: 'profile pic') %>
-    
-            <% end %>
+<% @user.opinions.each do |opinion| %>
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <% if opinion.user.photo.attached? %>
+      
+      <figure class="image is-64x64">
+        <%= image_tag(opinion.user.photo)  %>
+        <% else %>
+        <%= gravatar_image_tag(opinion.user.email, size: 64, alt: 'profile pic') %>
+      </figure>
+      <% end %>
+    </div>
+    <div class="media-content">
+        <div class="content">
+         <strong>
+           <%= link_to(opinion.user.username, user_path(opinion.user)) %></strong> </br>
+          
+         <small><%=opinion.user.fullname%></small></br>
+           <p> <%= opinion.text %></p></div>
+    </div>
+    <% if user_signed_in? && opinion.user == current_user %>
+     <%= link_to 'Edit', edit_opinion_path(opinion), class: 'button is-light' %> 
+     <%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+    <% end %>
+     
+  </article>
+</div>
+<% end %>
+</div>
+<div class="column is-one-third">
+    <div class="column ">
+	<nav class="panel ">
+		<p class="panel-heading  has-text-grey-light"><%= @user.username %></p>
+	    
+		<div class="panel-block ">
+			<article class="media ">
+				<div class="media-left ">
+					<figure class="image is-64x64">
+					<% if @user.photo.attached? %>
+       					<%= image_tag(@user.photo)  %>
+       				<% else %>
+        				<%= gravatar_image_tag(@user.email, size: 64, alt: 'profile pic') %>
+      				<% end %>
+					</figure>
+				</div>
+				<div class="media-content">
+					<div class="content has-text-grey-light">
+						<p>
+							<strong class="has-text-grey-light"><%= @user.username %></strong><br />
+							<small><%= @user.fullname %></small>
+						</p>
+					</div>
+                </div>
+                    
+			</article>
+		</div>
+		<div class="panel-block ">
+			<div class="level is-mobile has-text-centered">
+				<div class="level-item has-text-centered has-text-grey-light">
+					<div>
+						<p class="heading">Opinions</p>
+						<p class="title is-6 has-text-centered has-text-grey-light"><%= @user.opinions.count %></p>
+					</div>
+				</div>
+				<div class="level-item has-text-centered has-text-grey-light">
+					<div>
+						<p class="heading">Following</p>
+						<p class="title is-6 has-text-centered has-text-grey-light"><%= @user.followings.count%></p>
+					</div>
+				</div>
+					<div class="level-item has-text-grey-light">
+					<div>
+						<p class="heading">Followers</p>
+						<p class="title is-6 has-text-centered has-text-grey-light"><%=@user.followers.count%></p>
+					</div>
+				</div>
+            </div></br>
             
+           </div>
+           <div class=" has-text-centered">
+<p class="is-size-3 has-text-centered p-3 has-text-grey-dark">Followers</p>
+</div>
+	<div class="">
+		<% @user.followers.each do |follower| %>
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <% if follower.photo.attached? %>
+      
+      <figure class="image is-64x64">
+        <%= image_tag(follower.photo)  %>
+        <% else %>
+        <%= gravatar_image_tag(follower.email, size: 64, alt: 'profile pic') %>
+      </figure>
+      <% end %>
+    </div>
+    <div class="media-content">
+        <div class="content">
+         <strong>
+           <%= link_to(follower.username, user_path(follower)) %></strong> </br>
+          
+         <small><%=follower.fullname%></small></br>
+        
+    </div>
+            <div class="">
+                 <% if user_signed_in? %>
+            <% if current_user.id != follower.id %>
+            <% if !current_user.following?(follower) %> 
+                       <% end %>
+
+            <% end %>
+                        <% end %>
+
+            </div>
+     
+  </article>
+</div>
+<% end %>
+
+		
+	</div>
+	</nav>
+</div>
+</div>
+            
+</div>

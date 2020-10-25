@@ -16,14 +16,15 @@
 
 @import "bulma";
 
-.image {
-  border-radius: 50%;
-
-  img {
-    border-radius: 50%;
-  }
-}
 
 .notification:not(:last-child) {
   margin-bottom: 0;
+}
+
+.side-menu {
+  background-color: #1B2A3D;
+}
+
+.side-menu-2 {
+  background-color: #213246;
 }
