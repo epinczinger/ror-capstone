@@ -18,8 +18,8 @@ class User < ApplicationRecord
   validates_uniqueness_of :username, case_sensitive: false
   validates_presence_of :username
   validates_presence_of :fullname
-  validates :username, length: { minimum: 5, maximum: 15}
-  validates :fullname, length: { minimum: 5, maximum: 25}
+  validates :username, length: { minimum: 5, maximum: 15 }
+  validates :fullname, length: { minimum: 5, maximum: 25 }
 
   def follow(other)
     active_followings.create(followed_id: other.id)

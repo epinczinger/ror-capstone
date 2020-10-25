@@ -20,5 +20,4 @@ module ApplicationHelper
       link_to('Like!', opinion_likes_path(opinion_id: opinion.id), method: :post)
     end
   end
-
 end
