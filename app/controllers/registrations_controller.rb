@@ -2,10 +2,8 @@ class RegistrationsController < Devise::RegistrationsController
   def edit
     user = current_user
   end
- 
-  private
 
-  
+  private
 
   def sign_up_params
     params.require(:user).permit(:fullname, :username, :email, :password, :password_confirmation)

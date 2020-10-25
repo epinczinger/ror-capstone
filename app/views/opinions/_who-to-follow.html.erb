@@ -4,22 +4,22 @@
     <% if user_signed_in? %>
     <div class="panel-block">
        
-        <div class="box"></br>
+        <div class="box "></br>
            <% @users.each do |user| %>
-          <article class="media">
+          <article class="media ">
             <div class="media-left">
-               <% if user.photo.attached? %>
-      
-      <figure class="image is-64x64">
-        <%= image_tag(user.photo)  %>
-        <% else %>
-        <%= gravatar_image_tag(user.email, size: 64, alt: 'profile pic') %>
-      </figure>
-      <% end %>
+              <% if user.photo.attached? %>
+              <figure class="image is-64x64">
+               <%= image_tag(user.photo)  %>
+               <% else %>
+               <%= gravatar_image_tag(user.email, size: 64, alt: 'profile pic') %>
+              </figure>
+               <% end %>
             </div>
             <div class="media-content">
                 <div class="content">
-                  <strong>@<%=user.username %></strong> </br>
+                  <strong>
+                   <%= link_to(user.username, user_path(user)) %></strong> </br>
                 </div>
                 <% if current_user.id != user.id %>
                   <% if !current_user.following?(user) %> 
@@ -33,12 +33,12 @@
         <% end %>
     <% end %>
 <% end %>
-            </div>
+                </div>
           </article>
                 <% end %>
         </div></br>
 
-    </div>
+    
     <% end %> 
   </nav>
 </div>

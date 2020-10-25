@@ -35,7 +35,9 @@
     </div>
     <div class="media-content">
         <div class="content">
-         <strong>@<%=opinion.user.username %></strong> </br>
+         <strong>
+           <%= link_to(opinion.user.username, user_path(opinion.user)) %></strong> </br>
+          
          <small><%=opinion.user.fullname%></small></br>
            <p> <%= opinion.text %></p></div>
     </div>
