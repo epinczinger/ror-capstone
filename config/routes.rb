@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/index'
   
+  authenticate :user do
+  root to: 'opinions#index', as: :authenticated_root
+  end
+  root to: redirect('/users/sign_in')
+
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :users, only: %i[show index]
   resources :users do
@@ -21,6 +26,6 @@ Rails.application.routes.draw do
    delete 'like', to: 'likes#destroy'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'opinions#index'
+
 end
 
