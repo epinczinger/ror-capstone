@@ -13,6 +13,14 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_one_attached :cover_image
 
+  has_many :likes, dependent: :destroy
+
+  validates_uniqueness_of :username, case_sensitive: false
+  validates_presence_of :username
+  validates_presence_of :fullname
+  validates :username, length: { minimum: 5, maximum: 15 }
+  validates :fullname, length: { minimum: 5, maximum: 25 }
+
   def follow(other)
     active_followings.create(followed_id: other.id)
   end
@@ -23,5 +31,9 @@ class User < ApplicationRecord
 
   def following?(other)
     followings.include?(other)
+  end
+
+  def not_following
+    User.where.not(id: followings).where.not(id: id).order('created_at DESC')
   end
 end
