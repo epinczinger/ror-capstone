@@ -1,66 +1,39 @@
 <div class="column is-one-third">
   <nav class="panel">
-    <p class="panel-heading">Who to Follow</p>
-    <% if user_signed_in? %>
-    <div class="column">
-       
-        <div class="box "></br>
-           <% current_user.not_following.each do |user| %>
-           
-          <article class="media ">
-            <div class="media-left">
-              <% if user.photo.attached? %>
-              <figure class="image is-64x64">
-               <%= image_tag(user.photo)  %>
-               <% else %>
-               <%= gravatar_image_tag(user.email, size: 64, alt: 'profile pic') %>
-              </figure>
-               <% end %>
-            </div>
-            <div class="media-content">
+    <p class="panel-heading">Who to Follow</p>    
+    <div class="column">       
+      <div class="box "></br>
+        <% current_user.not_following.each do |user| %>
+            <article class="media ">
+              <div class="media-left">
+                <% if user.photo.attached? %>
+                  <figure class="image is-64x64">
+                  <%= image_tag(user.photo)  %>
+                <% else %>
+                  <%= gravatar_image_tag(user.email, size: 64, alt: 'profile pic') %>
+                  </figure>
+                <% end %>
+              </div>
+              <div class="media-content">
                 <div class="content">
                   <strong>
-                   <%= link_to(user.username, user_path(user)) %></strong> </br>
+                    <%= link_to(user.username, user_path(user)) %></strong> </br>
                 </div>
                 <% if current_user.id != user.id %>
                   <% if !current_user.following?(user) %> 
                     <%= form_for(current_user.active_followings.build) do |f| %>
-                <div class=""><%= hidden_field_tag :followed_id, user.id %></div>
-                   <%= f.submit "Follow", class: "button is-info" %> 
-                <% end %> 
-               <% else %> 
-                <%= form_for(current_user.active_followings.find_by(followed_id: user.id),  html: {method: :delete}) do |f| %>
-                <%= f.submit "Unfollow", class: "button is-info" %>
-              <% end %>
-            <% end %>
-          <% end %>
-                </div>
-          </article>
+                      <div class=""><%= hidden_field_tag :followed_id, user.id %></div>
+                      <%= f.submit "Follow", class: "button is-info" %> 
+                    <% end %> 
+                  <% else %> 
+                    <%= form_for(current_user.active_followings.find_by(followed_id: user.id),  html: {method: :delete}) do |f| %>
+                      <%= f.submit "Unfollow", class: "button is-info" %>
+                    <% end %>
+                  <% end %>
                 <% end %>
-        </div></br>
-
-    <% else %>
-    <div class="box">
-        <% @users.each do |user| %>
-
-        <div class="media">
-          <div class="media-left">
-              <% if user.photo.attached? %>
-              <figure class="image is-64x64">
-               <%= image_tag(user.photo)  %>
-               <% else %>
-               <%= gravatar_image_tag(user.email, size: 64, alt: 'profile pic') %>
-              </figure>
-               <% end %>
-          </div>
-          <div class="media-content">
-                  <strong>
-                   <%= link_to(user.username, user_path(user)) %></strong> </br>
-                   <%= user.fullname %>
-          </div>
-        </div>
+              </div>
+            </article>
         <% end %>
-      </div>
-    <% end %> 
+      </div></br>  
   </nav>
 </div>

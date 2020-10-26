@@ -23,4 +23,24 @@ module ApplicationHelper
       link_to('Like!', opinion_likes_path(opinion_id: opinion.id), method: :post, class: 'button is-info is-small')
     end
   end
+
+  def show_cover_image(user)
+    return if user.nil?
+
+    if user.cover_image.attached?
+      image_tag(user.cover_image, alt: user.username, class: '')
+    else
+      image_tag('https://source.unsplash.com/900x300/?surf', alt: user.username, class: 'pr-2')
+    end
+  end
+
+  def show_photo(user)
+    return if user.nil?
+
+    if user.photo.attached?
+      image_tag(user.photo, alt: user.username, class: '')
+    else
+      gravatar_image_tag(user.email, size: 64, alt: 'profile pic')
+    end
+  end
 end

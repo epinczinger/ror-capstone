@@ -9,6 +9,13 @@
         f.error_notification %>
 
         <div class="form-inputs">
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %>
+          <p>
+            Currently waiting confirmation for: <%= resource.unconfirmed_email
+            %>
+          </p>
+          <% end %>
           <div class="field">
             <div class="control">
               <%= f.input :email, required: true, autofocus: true, label_html: {
@@ -17,24 +24,18 @@
           </div>
           <div class="field">
             <div class="control">
-              <% if devise_mapping.confirmable? &&
-              resource.pending_reconfirmation? %>
-              <p>
-                Currently waiting confirmation for: <%=
-                resource.unconfirmed_email %>
-              </p>
-              <% end %> <% if @user.photo.attached? %> <%= f.input :photo,
-              label_html: { class:"label" }, wrapper: false %> <%=
-              image_tag(@user.photo, size: 100) %> <% end %>
+              <%= f.input :photo, label_html: { class:"label" }, wrapper: false
+              %>
             </div>
           </div>
+          <div class=""> <%= show_photo(@user) %></div>
           <div class="field">
             <div class="control">
               <%= f.input :cover_image, label_html: { class:"label" }, wrapper:
-              false %> <% if @user.cover_image.attached? %> <%=
-              image_tag(@user.cover_image, size: 300) %> <% end %>
+              false %>     
             </div>
           </div>
+          <div class=" image is-900x300 is-3by1"><%= show_cover_image(@user) %>     </div>  
           <div class="field">
             <div class="control">
               <%= f.input :password, hint: "leave it blank if you don't want to
