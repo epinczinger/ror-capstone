@@ -6,7 +6,9 @@
         <% current_user.not_following.each do |user| %>
             <article class="media ">
               <div class="media-left">
-              <div class=" image is-64x64"></div>  <%= show_photo(user) %>
+                <div class="image is-64x64"> 
+                    <%= show_photo(user) %>
+                </div>
               </div>
               <div class="media-content">
                 <div class="content">
