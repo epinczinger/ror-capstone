@@ -8,6 +8,11 @@ Developed with Advanced associations, authentication, and validations.
 ### Live Demo on Heroku
 
 [Live link](https://glacial-lake-79025.herokuapp.com/)
+
+### Explanation on Video
+
+[Link to video](https://www.loom.com/share/89d6a1427e6e4068b65423f378d40bc4)
+
 ## Built With
 
 - Ruby v2.7.0
