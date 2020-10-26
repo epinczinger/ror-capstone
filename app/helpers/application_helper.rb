@@ -25,7 +25,8 @@ module ApplicationHelper
   end
 
   def show_cover_image(user)
-    return unless user!=nil
+    return if user.nil?
+
     if user.cover_image.attached?
       image_tag(user.cover_image, alt: user.username, class: '')
     else
@@ -34,7 +35,8 @@ module ApplicationHelper
   end
 
   def show_photo(user)
-    return unless user!=nil
+    return if user.nil?
+
     if user.photo.attached?
       image_tag(user.photo, alt: user.username, class: '')
     else
