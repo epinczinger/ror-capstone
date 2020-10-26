@@ -6,13 +6,9 @@
         <% current_user.not_following.each do |user| %>
             <article class="media ">
               <div class="media-left">
-                <% if user.photo.attached? %>
-                  <figure class="image is-64x64">
-                  <%= image_tag(user.photo)  %>
-                <% else %>
-                  <%= gravatar_image_tag(user.email, size: 64, alt: 'profile pic') %>
-                  </figure>
-                <% end %>
+                <div class="image is-64x64"> 
+                    <%= show_photo(user) %>
+                </div>
               </div>
               <div class="media-content">
                 <div class="content">
