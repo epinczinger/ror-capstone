@@ -35,12 +35,14 @@ RSpec.describe User, type: :model do
     end
 
     it 'fullname length has to be minor than 25 char' do
-      new_user = User.new(username: 'esteban1', fullname: 'Thisisaveryveryverylongname really long', email: 'ert@hg.com', password: '123123')
+      new_user = User.new(username: 'esteban1', fullname: 'Thisisaveryveryverylongname really long',
+                          email: 'ert@hg.com', password: '123123')
       expect(new_user.save).to eq(false)
     end
 
     it 'username length has to be minor than 15 char' do
-      new_user = User.new(username: 'Thisisaveryveryverylongname', fullname: 'Esteban Pinczing', email: 'ert@hg.com', password: '123123')
+      new_user = User.new(username: 'Thisisaveryveryverylongname', fullname: 'Esteban Pinczing',
+                          email: 'ert@hg.com', password: '123123')
       expect(new_user.save).to eq(false)
     end
   end
@@ -75,5 +77,4 @@ RSpec.describe User, type: :model do
       expect(@user1.not_following.count).to eq(2)
     end
   end
- 
 end
