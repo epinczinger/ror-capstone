@@ -13,7 +13,7 @@ class LikesController < ApplicationController
     like = Like.find_by(id: params[:id], user: current_user, opinion_id: params[:opinion_id])
     if like
       like.destroy
-      redirect_to opinions_path, notice: 'You disliked the opinion.'
+      redirect_to opinions_path, alert: 'You disliked the opinion.'
     else
       redirect_to opinions_path, alert: 'You could not dislike the opinion.'
     end
