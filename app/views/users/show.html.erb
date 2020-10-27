@@ -25,8 +25,8 @@
       <div class="box">
         <article class="media">
           <div class="media-left">
-              <figure class="image is-64x64">
-             <%= show_photo(opinion.user) %>
+              <figure class="image is-square is-64x64">
+                <%= show_photo(opinion.user) %>
               </figure>
           </div>
           <div class="media-content">
@@ -35,10 +35,7 @@
               <small><%=opinion.user.fullname%></small></br>
               <p><%= opinion.text %></p></div>
             </div>
-              <% if user_signed_in? && opinion.user == current_user %>
-                <%= link_to 'Edit', edit_opinion_path(opinion), class: 'button is-light' %> 
-                <%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
-              <% end %>  
+              <%= edit_destroy_btn(opinion) %>  
         </article>
       </div>  
     <% end %>

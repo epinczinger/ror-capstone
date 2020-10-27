@@ -1,7 +1,7 @@
 <div class="column">   
     <article class="media box">            
       <div class="media-left">
-        <figure class="image is-64x64">
+        <figure class="image is-square is-64x64">
            <%= show_photo(current_user) %>
         </figure>       
       </div>    
@@ -14,7 +14,7 @@
     <div class="box">
       <article class="media">
         <div class="media-left">      
-          <figure class="image is-64x64">
+          <figure class="image is-square is-64x64">
             <%= show_photo(opinion.user) %>
           </figure>
        
@@ -27,10 +27,8 @@
             <p> <%= opinion.text %></p></div>           
           </div>
           <div class="">
-            <% if opinion.user == current_user %>
-            <%= link_to 'Edit', edit_opinion_path(opinion), class: 'button is-light' %> 
-            <%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
-            <% end %></br>
+            
+            <%= edit_destroy_btn(opinion) %>  </br>
             <%= like_or_dislike_btn(opinion) %> </br></br>
             <small><%= opinion.likes.count %> People liked it</small> 
           </div>

@@ -2,54 +2,52 @@
 <html>
   <head>
     <title>Surfeature</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
+    <%= csrf_meta_tags %> <%= csp_meta_tag %> 
     <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <% if flash[:notice] %>
-    
     <div class="notification is-primary global-notification">
-      <p class="notice"><%= notice %> </p>
+      <p class="notice"><%= notice %></p>
     </div>
-    <% end %>
-     <% if flash[:alert] %>
-    
+    <% end %> 
+
+    <% if flash[:alert] %>
     <div class="notification is-danger global-notification">
-      <p class="alert"><%= alert %> </p>
+      <p class="alert"><%= alert %></p>
     </div>
     <% end %>
 
     <section class="columns is-gapless">
-    <section class="column is-one-quarter side-menu">
-    <%= render 'opinions/side-menu' %>
-    </section>
-    <section class="column is-three-quarters">
-    <nav class="navbar is-link">
-      <div class="navbar-brand">
-      <%= link_to root_path, class: "navbar-item" do%>
-      <h1 class="title is-5">Surfeature</h1>
-      <% end %>
-      </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-           <div class="buttons">
-          
-              <%= link_to 'Share your info', root_path, class: "is-dark button"%>
-               <%= sign_in_out %>
-            </div></div>
-      </div>
-        
-       
-    
-    </nav>
-    <%= yield %>
-    </section>
+      <section class="column is-one-quarter side-menu">
+        <%= render 'opinions/side-menu' %>
+      </section>
+      <section class="column is-three-quarters">
+        <nav class="navbar is-link">
+          <div class="navbar-brand">
+            <%= link_to root_path, class: "navbar-item" do%>
+            <h1 class="title is-5">Surfeature</h1>
+            <% end %>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <%= link_to 'Share your info', root_path, class: "is-dark
+                button"%> 
+                <%= sign_in_out %>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <%= yield %>
+      </section>
     </section>
   </body>
-  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+  <script
+    defer
+    src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"
+  ></script>
 </html>

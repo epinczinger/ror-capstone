@@ -43,4 +43,14 @@ module ApplicationHelper
       gravatar_image_tag(user.email, size: 64, alt: 'profile pic')
     end
   end
+
+  def edit_destroy_btn(opinion)
+    return unless user_signed_in? && opinion.user == current_user
+
+    out = ''
+    out << link_to('Edit', edit_opinion_path(opinion), class: 'button is-light is-small')
+    out << ' '
+    out << link_to('Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-small')
+    out.html_safe
+  end 
 end
