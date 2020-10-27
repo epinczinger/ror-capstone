@@ -53,4 +53,19 @@ module ApplicationHelper
     out << link_to('Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-small')
     out.html_safe
   end 
+
+  # def follow_unfollow_btn(user)
+  #   return unless current_user.id != user.id
+  #   out = ''
+  #   if !current_user.following?(user)
+  #     form_for(current_user.active_followings.build) do |f|
+  #       out << hidden_field_tag(:followed_id, user.id)
+  #       out << f.submit("Follow", class: "button is-info")
+  #     end
+  #   else
+  #     form_for(current_user.active_followings.find_by(followed_id: @user.id),  html: {method: :delete}) do |f|
+  #     out << f.submit("Unfollow", class: "button is-info is-small")
+  #     end
+  #   end
+  # end
 end
