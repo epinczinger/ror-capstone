@@ -50,9 +50,10 @@ module ApplicationHelper
     out = ''
     out << link_to('Edit', edit_opinion_path(opinion), class: 'button is-light is-small')
     out << ' '
-    out << link_to('Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-small')
+    out << link_to('Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' },
+                                       class: 'button is-danger is-small')
     out.html_safe
-  end 
+  end
 
   # def follow_unfollow_btn(user)
   #   return unless current_user.id != user.id
