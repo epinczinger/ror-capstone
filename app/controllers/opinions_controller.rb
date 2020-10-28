@@ -5,9 +5,9 @@ class OpinionsController < ApplicationController
   # GET /opinions
   # GET /opinions.json
   def index
-    @opinions = Opinion.all.order('created_at DESC')
+    @opinions = Opinion.all.ordered_desc.includes(user: :photo_attachment)
     @opinion = Opinion.new
-
+    
     @users = User.all
   end
 

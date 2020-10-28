@@ -37,7 +37,7 @@ module ApplicationHelper
   def show_photo(user)
     return if user.nil?
 
-    if user.photo.attached?
+    if user.photo.present?
       image_tag(user.photo, alt: user.username, class: '')
     else
       gravatar_image_tag(user.email, size: 64, alt: 'profile pic')
