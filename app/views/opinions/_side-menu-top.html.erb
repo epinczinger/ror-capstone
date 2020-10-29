@@ -1,0 +1,48 @@
+<p class="panel-heading side-menu has-text-grey-light">Profile</p>
+   
+    <div class="box side-menu">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-square is-64x64">
+            <%= show_photo(current_user) %>
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content has-text-grey-light">
+            <p>
+              <strong class="has-text-grey-light"
+                ><%= current_user.username %></strong
+              ><br />
+              <small><%= current_user.fullname %></small>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="side-menu-2 mx-1 columns is-mobile">
+      <div class="level-item column has-text-centered has-text-grey-light">
+        <div>
+          <p class="heading">Opinions</p>
+          <p class="title is-6 has-text-centered has-text-grey-light">
+            <%= current_user.opinions.count %>
+          </p>
+        </div>
+      </div>
+      <div class="level-item column has-text-centered has-text-grey-light">
+        <div>
+          <p class="heading">Following</p>
+          <p class="title is-6 has-text-grey-light">
+            <%= current_user.followings.count%>
+          </p>
+        </div>
+      </div>
+      <div class="level-item column has-text-centered has-text-grey-light">
+        <div>
+          <p class="heading">Followers</p>
+          <p class="title is-6 has-text-grey-light">
+            <%=current_user.followers.count%>
+          </p>
+        </div>
+      </div>
+    </div>

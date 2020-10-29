@@ -55,6 +55,10 @@ module ApplicationHelper
     out.html_safe
   end
 
+  def authorized_partial(the_partial)
+    render partial: the_partial if user_signed_in?
+  end
+
   # def follow_unfollow_btn(user)
   #   return unless current_user.id != user.id
   #   out = ''
