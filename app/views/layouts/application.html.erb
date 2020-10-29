@@ -9,18 +9,7 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-    <div class="notification is-primary global-notification">
-      <p class="notice"><%= notice %></p>
-    </div>
-    <% end %> 
-
-    <% if flash[:alert] %>
-    <div class="notification is-danger global-notification">
-      <p class="alert"><%= alert %></p>
-    </div>
-    <% end %>
-
+    <%= render_flash_messages %>
     <section class="columns is-gapless">
       <section class="column is-one-quarter side-menu">
         <%= render 'opinions/side-menu' %>

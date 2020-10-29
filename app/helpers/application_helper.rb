@@ -59,6 +59,16 @@ module ApplicationHelper
     render partial: the_partial if user_signed_in?
   end
 
+  def render_flash_messages    
+    if flash[:notice]
+      render :partial => 'layouts/flash_notice', :object => flash[:notice]
+    end
+    
+    if flash[:alert]
+      render :partial => 'layouts/flash_alert', :object => flash[:alert]
+    end
+  end
+
   # def follow_unfollow_btn(user)
   #   return unless current_user.id != user.id
   #   out = ''
