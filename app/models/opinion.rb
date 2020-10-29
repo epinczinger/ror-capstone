@@ -5,5 +5,5 @@ class Opinion < ApplicationRecord
   validates_presence_of :text
   validates :text, length: { minimum: 1, maximum: 140 }
 
-  scope :ordered_desc, -> {includes(:user).order(created_at: :desc)}
+  scope :ordered_desc, -> { includes(:user).order(created_at: :desc) }
 end
