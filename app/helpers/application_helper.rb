@@ -59,28 +59,23 @@ module ApplicationHelper
     render partial: the_partial if user_signed_in?
   end
 
-  def render_flash_messages    
-    if flash[:notice]
-      render :partial => 'layouts/flash_notice', :object => flash[:notice]
-    end
-    
-    if flash[:alert]
-      render :partial => 'layouts/flash_alert', :object => flash[:alert]
-    end
+  def render_flash_messages
+    render partial: 'layouts/flash_notice', object: flash[:notice] if flash[:notice]
+
+    render partial: 'layouts/flash_alert', object: flash[:alert] if flash[:alert]
   end
 
-  # def follow_unfollow_btn(user)
-  #   return unless current_user.id != user.id
-  #   out = ''
-  #   if !current_user.following?(user)
-  #     form_for(current_user.active_followings.build) do |f|
-  #       out << hidden_field_tag(:followed_id, user.id)
-  #       out << f.submit("Follow", class: "button is-info")
-  #     end
-  #   else
-  #     form_for(current_user.active_followings.find_by(followed_id: @user.id),  html: {method: :delete}) do |f|
-  #     out << f.submit("Unfollow", class: "button is-info is-small")
-  #     end
-  #   end
-  # end
+  def display_follow_btn(user, the_partial)
+    return unless current_user.id != user.id
+    return if current_user.following?(user)
+
+    render partial: the_partial, locals: { obj: user }
+  end
+
+  def display_unfollow_btn(user, the_partial)
+    return unless current_user.id != user.id
+    return unless current_user.following?(user)
+
+    render partial: the_partial, locals: { obj: user }
+  end
 end
