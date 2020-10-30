@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :username, length: { minimum: 5, maximum: 15 }
   validates :fullname, length: { minimum: 5, maximum: 25 }
 
-  scope :with_photo, -> { includes(:photo_attachment) }
+  scope :with_photos, -> { includes(:photo_attachment, :cover_image_attachment) }
 
   def follow(other)
     active_followings.create(followed_id: other.id)
