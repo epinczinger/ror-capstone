@@ -11,6 +11,9 @@ RSpec.describe User, type: :model do
       association = User.reflect_on_association(:likes)
       expect(association.macro).to eq(:has_many)
     end
+
+    it { should have_many(:followings).through(:active_followings) }
+    it { should have_many(:followers).through(:pasive_followings) }
   end
 
   context 'Validations' do
